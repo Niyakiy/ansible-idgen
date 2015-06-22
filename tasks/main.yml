@@ -1,0 +1,7 @@
+---
+- name: install uuidgen runtime
+  apt: name=uuid-runtime state=present
+  when: ansible_os_family == "Debian"
+
+- name: generate uuid file
+  command: /usr/bin/uuidgen > {{uuid_file_location}} creates={{uuid_file_location}}
